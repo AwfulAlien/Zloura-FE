@@ -1,36 +1,23 @@
+@import '~@angular/material/theming';
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
+$zloura-primary: mat-palette($mat-red, 700);
+$zloura-accent: mat-palette($mat-amber, 500);
+$zloura-warn: mat-palette($mat-red);
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the theme object.
-$Zloura-theme: mat.define-theme((
+$zloura-theme: mat-light-theme((
   color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
+    primary: $zloura-primary,
+    accent: $zloura-accent,
+    warn: $zloura-warn,
   ),
-  density: (
-    scale: 0,
-  )
+  typography: mat-typography-config(),
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-:root {
-  @include mat.all-component-themes($Zloura-theme);
+@include mat-core();
+
+@include angular-material-theme($zloura-theme);
+
+body {
+  background-color: #000;
+  color: #fff;
 }
-
-// Comment out the line below if you want to use the pre-defined typography utility classes.
-// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
-// @include mat.typography-hierarchy($Zloura-theme);
-
-// Comment out the line below if you want to use the deprecated `color` inputs.
-// @include mat.color-variants-backwards-compatibility($Zloura-theme);
