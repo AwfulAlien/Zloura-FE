@@ -1,23 +1,21 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@use '../theme-colors' as my-theme;
 
-$zloura-primary: mat-palette($mat-red, 700);
-$zloura-accent: mat-palette($mat-amber, 500);
-$zloura-warn: mat-palette($mat-red);
+html {
+  @include mat.theme((
+    color: (
+      primary: my-theme.$primary-palette,
+      tertiary: my-theme.$tertiary-palette,
+      theme-type: light
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
 
-$zloura-theme: mat-light-theme((
-  color: (
-    primary: $zloura-primary,
-    accent: $zloura-accent,
-    warn: $zloura-warn,
-  ),
-  typography: mat-typography-config(),
-));
-
-@include mat-core();
-
-@include angular-material-theme($zloura-theme);
-
-body {
-  background-color: #000;
-  color: #fff;
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: #F1F1F1,
+    container-text-color: #1B1B1C,
+  ));
 }
