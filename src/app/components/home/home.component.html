@@ -1,1 +1,15 @@
-<app-toolbar></app-toolbar>
+<app-toolbar></app-toolbar> <app-hero></app-hero>
+<div class="category-container">
+  <div class="title-container">
+    <span class="title">Categories</span>
+  </div>
+  <div class="parent-cat-container">
+    <ng-container class="cat-div" *ngFor="let cat of categories">
+      <app-category
+        class="cat"
+        [name]="cat.name"
+        [image]="cat.image"
+      ></app-category>
+    </ng-container>
+  </div>
+</div>
